@@ -1,13 +1,26 @@
 import { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, SendHorizontal } from 'lucide-react';
+import { MessageCircle, X, SendHorizontal, Loader2 } from 'lucide-react';
 import { nanoid } from 'nanoid';
+import emailjs from '@emailjs/browser';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi! Welcome to Praveen's portfolio. How can I help you?" }
-  ]);
   const [userInput, setUserInput] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  
+  // State for user details
+  const [userInfo, setUserInfo] = useState({ name: "", email: "" });
+  
+  // Steps: 
+  // 0 = Name
+  // 1 = Email
+  // 2 = General Chat (Answering FAQs, no email)
+  // 3 = Message Mode (Next input will be sent as email)
+  const [chatStep, setChatStep] = useState(0); 
+
+  const [messages, setMessages] = useState([
+    { sender: "bot", text: "Hi! Welcome to Praveen's Portfolio. Before we start, may I know your name?" }
+  ]);
 
   const chatEndRef = useRef(null);
 
@@ -17,84 +30,141 @@ const Chatbot = () => {
 
   const toggleChatbot = () => setIsOpen(!isOpen);
 
+  // --- YOUR FAQ LOGIC ---
   function getAnswer(text) {
-    if (text.includes("project") || text.includes("work"))
-      return "You can view Praveen’s projects in the ‘Projects’ section — they include React, Node.js, and MERN stack apps 🚀.";
-    if (text.includes("about"))
-      return "Praveen is a Computer Science Engineer passionate about building modern web apps using React and Node.js 💻.";
-    if (text.includes("contact"))
-      return "You can reach Praveen via the Contact page or just leave your message here 📩.";
+    const lowerText = text.toLowerCase();
 
+    // Specific Portfolio Questions
+    if (lowerText.includes("project") || lowerText.includes("work"))
+      return "You can view Praveen’s projects in the ‘Projects’ section — they include React, Node.js, and MERN stack apps 🚀.";
+    if (lowerText.includes("about"))
+      return "Praveen is a Computer Science Engineer passionate about building modern web apps using React and Node.js 💻.";
+    
     // --- FAQ responses ---
-    if (text.includes("skills"))
+    if (lowerText.includes("skills"))
       return "He’s skilled in React, Node.js, Express, MongoDB, Tailwind CSS, and JavaScript ⚛️.";
-    if (text.includes("education") || text.includes("college"))
+    if (lowerText.includes("education") || lowerText.includes("college"))
       return "He completed his B.E. in Computer Science and Engineering 🎓.";
-    if (text.includes("experience"))
+    if (lowerText.includes("experience"))
       return "He’s worked on multiple personal and academic projects while learning full-stack development 🧠.";
 
-    // --- Contact feature ---
-    if (text.includes("hi") || text.includes("hello"))
+    // --- Greetings ---
+    if (lowerText.includes("hi") || lowerText.includes("hello"))
       return "Hey there! 👋 How can I help you today?";
-    if (text.includes("message") || text.includes("leave"))
-      return "Sure! Type your message below and I’ll make sure Praveen gets it 💌.";
 
-    return "Hmm… I didn’t catch that 🤔. You can ask about projects, skills, or leave a message!";
+    // Default Fallback
+    return "Hmm… I didn’t catch that 🤔. You can ask about projects, skills, or say 'leave a message' to contact Praveen directly!";
   }
 
-  function handleSubmit() {
+  const handleStepLogic = (text) => {
+    // --- STEP 0: CAPTURE NAME ---
+    if (chatStep === 0) {
+      setUserInfo({ ...userInfo, name: text });
+      setChatStep(1);
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+            sender: "bot", 
+            text: `Nice to meet you, ${text}! What is your email address?` 
+        }]);
+      }, 500);
+      return;
+    }
+
+    // --- STEP 1: CAPTURE EMAIL ---
+    if (chatStep === 1) {
+      setUserInfo(prev => ({ ...prev, email: text })); // Ensure state updates correctly
+      setChatStep(2); 
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+            sender: "bot", 
+            text: "Thanks! I've saved your details. You can now ask me about skills, projects, or say 'leave a message' to send an email." 
+        }]);
+      }, 500);
+      return;
+    }
+
+    // --- STEP 2: GENERAL CHAT (No Email Sent) ---
+    if (chatStep === 2) {
+      const lowerText = text.toLowerCase();
+      
+      // Check if user WANTS to send a message
+      if (lowerText.includes("message") || lowerText.includes("contact") || lowerText.includes("email") || lowerText.includes("leave")) {
+        setChatStep(3); // Switch to Message Mode
+        setTimeout(() => {
+          setMessages(prev => [...prev, { 
+            sender: "bot", 
+            text: "Sure! Please type the message you want to send to Praveen below. 👇" 
+          }]);
+        }, 500);
+        return;
+      }
+
+      // Otherwise, just answer the question locally
+      const botReply = getAnswer(text);
+      setTimeout(() => {
+        setMessages(prev => [...prev, { sender: "bot", text: botReply }]);
+      }, 500);
+      return;
+    }
+
+    // --- STEP 3: MESSAGE MODE (Send Email) ---
+    if (chatStep === 3) {
+      sendEmailToPraveen(text);
+      setChatStep(2); // Go back to General Chat after sending
+    }
+  };
+
+  const sendEmailToPraveen = (userMessage) => {
+    setIsSending(true);
+
+    const templateParams = {
+      name: userInfo.name,
+      email: userInfo.email, // This comes from Step 1
+      message: userMessage,  // This comes from Step 3 input
+      time: new Date().toLocaleString()
+    };
+
+    console.log("Sending Email with params:", templateParams);
+
+    emailjs.send("service_40dvzss", "template_b33pg1o", templateParams, "ZQTdsFiljIHUxkXG0")
+      .then(() => {
+        setTimeout(() => {
+             setMessages(prev => [...prev, { sender: "bot", text: "Message sent successfully! ✅ Praveen will reply to " + userInfo.email }]);
+             setIsSending(false);
+        }, 1000);
+      })
+      .catch((err) => {
+        console.error("Failed to send", err);
+        setMessages(prev => [...prev, { sender: "bot", text: "Oops! Failed to send message. Please try again later." }]);
+        setIsSending(false);
+      });
+  };
+
+  const handleSubmit = () => {
     if (!userInput.trim()) return;
 
-    const query = { sender: "you", text: userInput };
-    
-    // Add user message first
-    setMessages((prev) => [...prev, query]);
-
-    // Simulate a small delay for the bot response to feel natural
-    setTimeout(() => {
-        const answer = { sender: 'bot', text: getAnswer(userInput.toLowerCase()) };
-        setMessages((prev) => [...prev, answer]);
-    }, 500);
-    
+    setMessages(prev => [...prev, { sender: "you", text: userInput }]);
+    handleStepLogic(userInput);
     setUserInput("");
-  }
+  };
 
   return (
-    // Added z-50 to ensure it floats above all other sections
     <div className="fixed bottom-4 right-4 z-50">
-      
-      {/* Toggle Button */}
-      <button 
-        onClick={toggleChatbot} 
-        className="rounded-full bg-indigo-500 p-3 text-white shadow-lg transition-transform hover:scale-110 hover:bg-indigo-700 focus:outline-none"
-      >
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+      <button onClick={toggleChatbot} className="rounded-full bg-indigo-500 p-3 text-white shadow-lg hover:bg-indigo-700 transition-all focus:outline-none">
+         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
 
-      {/* Chat Window */}
       {isOpen && (
-        <div className="absolute bottom-16 right-0 mb-2 flex h-[450px] w-80 flex-col overflow-hidden rounded-lg bg-white shadow-xl sm:w-96">
-          
-          {/* Header */}
-          <div className="bg-indigo-500 p-4 text-white">
+        <div className="absolute bottom-16 right-0 mb-2 flex h-[450px] w-80 flex-col overflow-hidden rounded-lg bg-white shadow-xl sm:w-96 border border-gray-200">
+          <div className="bg-indigo-500 p-4 text-white flex justify-between items-center">
             <p className="font-bold">Virtual Assistant</p>
-            <p className="text-xs opacity-90">Ask me about Praveen!</p>
+            {isSending && <span className="text-xs bg-indigo-600 px-2 py-1 rounded animate-pulse">Sending...</span>}
           </div>
 
-          {/* Messages Area */}
           <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
             {messages.map((msg) => (
-              <div 
-                key={nanoid()} 
-                className={`mb-3 flex ${msg.sender === 'bot' ? 'justify-start' : 'justify-end'}`}
-              >
-                <div 
-                  className={`max-w-[80%] rounded-lg p-2 text-sm ${
-                    msg.sender === 'bot' 
-                      ? "bg-gray-200 text-gray-800" 
-                      : "bg-indigo-500 text-white"
-                  }`}
-                >
+              <div key={nanoid()} className={`mb-3 flex ${msg.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
+                <div className={`max-w-[80%] rounded-lg p-2 text-sm ${msg.sender === 'bot' ? "bg-gray-200 text-gray-800" : "bg-indigo-500 text-white"}`}>
                   <p>{msg.text}</p>
                 </div>
               </div>
@@ -102,24 +172,26 @@ const Chatbot = () => {
             <div ref={chatEndRef} />
           </div>
 
-          {/* Input Area */}
           <div className="flex items-center gap-2 border-t p-3 bg-white">
             <input 
               type="text" 
-              value={userInput} 
-              placeholder="Type a message..."
-              className="flex-1 rounded-full border px-4 py-2 text-sm outline-none focus:border-indigo-500"
+              value={userInput}
+              disabled={isSending}
+              // Placeholder changes based on the step
+              placeholder={chatStep === 0 ? "Enter your Name..." : chatStep === 1 ? "Enter your Email..." : chatStep === 3 ? "Type your message to send..." : "Ask me anything..."}
+              className="flex-1 rounded-full border px-4 py-2 text-sm outline-none focus:border-indigo-500 disabled:bg-gray-100"
               onKeyDown={(e) => e.key === "Enter" && handleSubmit()} 
               onChange={(e) => setUserInput(e.target.value)}
             />
-            <button
-              onClick={handleSubmit}
-              className="rounded-full bg-indigo-500 p-2 text-white hover:bg-indigo-700"
+            
+            <button 
+                onClick={handleSubmit} 
+                disabled={isSending} 
+                className="rounded-full bg-indigo-500 p-2 text-white hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed focus:outline-none"
             >
-              <SendHorizontal size={20} />
+              {isSending ? <Loader2 size={20} className="animate-spin" /> : <SendHorizontal size={20} />}
             </button>
           </div>
-
         </div>
       )}
     </div>
