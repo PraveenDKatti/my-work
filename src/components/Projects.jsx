@@ -1,37 +1,40 @@
 const Projects = () => {
   const projects = [
-    { title: "Project One", img: "./assets/project-1.png", github: "https://github.com", demo: "https://github.com" },
-    { title: "Project Two", img: "./assets/project-2.png", github: "https://github.com", demo: "https://github.com" },
-    { title: "Project Three", img: "./assets/project-3.png", github: "https://github.com", demo: "https://github.com" },
+    { title: "Project One", img: "./assets/project-1.png" },
+    { title: "Project Two", img: "./assets/project-2.png" },
+    { title: "Project Three", img: "./assets/project-3.png" },
   ];
 
   return (
-    <section id="projects">
-      <p className="section-text-p1">Browse My Recent</p>
-      <h1 className="title">Projects</h1>
-      <div className="experience-details-container">
-        <div className="about-containers">
-          
-          {projects.map((project, index) => (
-            <div key={index} className="details-container color-container">
-              <div className="article-container">
-                <img src={project.img} alt={project.title} className="project-img" />
-              </div>
-              <h2 className="experience-sub-title project-title">{project.title}</h2>
-              <div className="btn-container">
-                <button className="btn btn-color-2 project-btn" onClick={() => window.open(project.github)}>
-                  Github
-                </button>
-                <button className="btn btn-color-2 project-btn" onClick={() => window.open(project.demo)}>
-                  Live Demo
-                </button>
-              </div>
+    <section id="projects" className="relative h-fit">
+      <p className="text-center text-gray">Browse My Recent</p>
+      <h1 className="text-[3rem] font-bold text-center mb-12">Projects</h1>
+      
+      <div className="flex flex-col lg:flex-row gap-8 justify-center">
+        {projects.map((project, index) => (
+          <div key={index} className="p-6 flex-1 bg-[#fafafa] rounded-[2rem] border border-gray-light text-center h-fit">
+            <div className="h-[300px] w-full rounded-[2rem] overflow-hidden mb-4">
+              <img src={project.img} alt={project.title} className="w-full h-full object-cover" />
             </div>
-          ))}
-
-        </div>
+            <h2 className="text-[1.75rem] font-bold my-4">{project.title}</h2>
+            <div className="flex justify-center gap-4">
+              <button 
+                className="btn font-semibold p-4 w-32 rounded-[2rem] border border-gray-light hover:bg-gray-dark hover:text-white transition-all duration-300"
+                onClick={() => window.open('https://github.com/')}
+              >
+                Github
+              </button>
+              <button 
+                className="btn font-semibold p-4 w-32 rounded-[2rem] border border-gray-light hover:bg-gray-dark hover:text-white transition-all duration-300"
+                onClick={() => window.open('https://github.com/')}
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
-      <img src="./assets/arrow.png" alt="Arrow icon" className="icon arrow" onClick={() => (window.location.href = "./#projects")} />
+      <img src="./assets/arrow.png" alt="Arrow" className="absolute right-0 bottom-10 h-8 cursor-pointer" onClick={() => window.location.href = './#contact'} />
     </section>
   );
 };

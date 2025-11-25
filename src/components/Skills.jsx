@@ -1,61 +1,51 @@
 const Skills = () => {
-  const frontendSkills = [
-    { name: "HTML", level: "" },
-    { name: "CSS", level: "" },
-    { name: "JavaScript", level: "Advanced" },
-    { name: "TypeScript", level: "Basic" },
-    { name: "Bootstrap", level: "" },
-    { name: "Tailwind", level: "" },
+  const skills = [
+    {
+      category: "Frontend Development",
+      items: [
+        { name: "HTML", level: "" },
+        { name: "CSS", level: "" },
+        { name: "JavaScript", level: "Advanced" },
+        { name: "TypeScript", level: "Basic" },
+        { name: "Bootstrap", level: "" },
+        { name: "Tailwind", level: "" },
+      ]
+    },
+    {
+      category: "Other Technologies",
+      items: [
+        { name: "MySQL", level: "Basic" },
+        { name: "Node JS", level: "Intermediate" },
+        { name: "React", level: "Intermediate" },
+        { name: "Git", level: "Intermediate" },
+      ]
+    }
   ];
-
-  const backendSkills = [
-    { name: "MySQL", level: "Basic" },
-    { name: "Node JS", level: "Intermediate" },
-    { name: "React", level: "Intermediate" },
-    { name: "Git", level: "Intermediate" },
-  ];
-
-  // Helper component for a single skill item
-  const SkillItem = ({ name, level }) => (
-    <article>
-      <img src="./assets/checkmark.png" alt="Experience icon" className="icon" />
-      <div>
-        <h3>{name}</h3>
-        {level && <p>{level}</p>}
-      </div>
-    </article>
-  );
 
   return (
-    <section id="skills">
-      <p className="section-text-p1">Explore My</p>
-      <h1 className="title">Skills</h1>
-      <div className="experience-details-container">
-        <div className="about-containers">
-          
-          {/* Frontend Column */}
-          <div className="details-container">
-            <h2 className="experience-sub-title">Frontend Development</h2>
-            <div className="article-container">
-              {frontendSkills.map((skill) => (
-                <SkillItem key={skill.name} name={skill.name} level={skill.level} />
+    <section id="skills" className="relative h-fit mb-40">
+      <p className="text-center text-gray">Explore My</p>
+      <h1 className="text-[3rem] font-bold text-center mb-12">Skills</h1>
+      
+      <div className="flex flex-col lg:flex-row gap-8 justify-center">
+        {skills.map((cat, index) => (
+          <div key={index} className="p-6 flex-1 bg-white rounded-[2rem] border border-gray-light">
+            <h2 className="text-gray font-semibold text-[1.75rem] mb-8 text-center">{cat.category}</h2>
+            <div className="flex flex-wrap gap-8 justify-around">
+              {cat.items.map((skill) => (
+                <article key={skill.name} className="flex w-[10rem] gap-4">
+                  <img src="./assets/checkmark.png" alt="checkmark" className="h-8 w-8" />
+                  <div>
+                    <h3 className="font-bold">{skill.name}</h3>
+                    <p className="text-gray text-sm">{skill.level}</p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
-
-          {/* Backend Column */}
-          <div className="details-container">
-            <h2 className="experience-sub-title">Other Technologies</h2>
-            <div className="article-container">
-              {backendSkills.map((skill) => (
-                <SkillItem key={skill.name} name={skill.name} level={skill.level} />
-              ))}
-            </div>
-          </div>
-
-        </div>
+        ))}
       </div>
-      <img src="./assets/arrow.png" alt="Arrow icon" className="icon arrow" onClick={() => (window.location.href = "./#projects")} />
+      <img src="./assets/arrow.png" alt="Arrow" className="absolute right-0 -bottom-10 h-8 cursor-pointer" onClick={() => window.location.href = './#projects'} />
     </section>
   );
 };

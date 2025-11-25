@@ -1,1 +1,18 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-poppins;
+  }
+  p {
+    @apply text-gray; /* Uses our custom color from config */
+  }
+  /* Your specific section layout */
+  section {
+    @apply pt-[4vh] h-auto min-h-fit mx-4 lg:mx-40 box-border mb-16;
+  }
+}
