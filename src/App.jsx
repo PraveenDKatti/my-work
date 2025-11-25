@@ -9,15 +9,29 @@ import Chatbot from "./components/Chatbot";
 
 function App() {
   return (
-    <div className="bg-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+    <div className="bg-white min-h-screen">
+      {/* This is the Main Layout Wrapper.
+        It aligns everything perfectly in the center 
+        and adds consistent padding on mobile/desktop.
+      */}
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-12 lg:px-28">
+        
+        <Navbar />
+        
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+        
+        <Footer />
+        
+      </div>
+      
+      {/* Chatbot sits outside the layout wrapper so it sticks to the screen edge, not the content edge */}
       <Chatbot />
-      <Footer />
     </div>
   );
 }

@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Nav */}
-      <nav className="hidden lg:flex justify-around items-center h-[17vh]">
+      <nav className="hidden lg:flex justify-between items-center h-[17vh] w-full">
         <div className="text-[2rem] cursor-default">Praveen Katti</div>
         <ul className="flex gap-8 list-none text-[1.5rem]">
           {navLinks.map((link) => (
