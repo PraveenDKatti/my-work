@@ -11,26 +11,21 @@ const Hero = () => {
       <div className="text-center self-center">
         <p className="font-semibold text-gray mb-1">Hello I'm</p>
         <h1 className="text-[3rem] font-bold mb-4">Praveen Katti</h1>
-        <p className="text-[1.75rem] font-semibold text-gray mb-4">Software Developer</p>
+        <p className="text-[1.75rem] font-semibold text-gray mb-4">MERN Stack Developer</p>
         
         <div className="flex justify-center gap-4 mb-4">
           <button 
-            className="btn font-semibold p-4 w-36 rounded-[2rem] border border-gray-dark hover:bg-gray-dark hover:text-white transition-all duration-300"
+            className="btn font-semibold p-4 w-36 rounded-[2rem] border border-gray-800 hover:bg-gray-800 hover:text-white transition-all duration-300"
             onClick={openPdf}
           >
             Download CV
           </button>
           <button 
-            className="btn font-semibold p-4 w-36 rounded-[2rem] bg-gray-dark text-white hover:bg-black transition-all duration-300"
+            className="btn font-semibold p-4 w-36 rounded-[2rem] bg-gray-800 text-white hover:bg-black transition-all duration-300"
             onClick={() => window.location.href = './#contact'}
           >
             Contact Info
           </button>
-        </div>
-
-        <div className="flex justify-center gap-4">
-          <img src="./assets/linkedin.png" alt="LinkedIn" className="h-8 cursor-pointer" onClick={() => window.open('https://www.linkedin.com/in/praveenkatti')} />
-          <img src="./assets/github.png" alt="Github" className="h-8 cursor-pointer" onClick={() => window.open('https://github.com/PraveenDKatti')} />
         </div>
       </div>
     </section>
