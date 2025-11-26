@@ -34,7 +34,7 @@ const Projects = () => {
           </div>
         ))}
       </div>
-      <img src="./assets/arrow.png" alt="Arrow" className="absolute right-0 bottom-10 h-8 cursor-pointer" onClick={() => window.location.href = './#contact'} />
+      <img src="./assets/arrow.png" alt="Arrow" className="absolute right-0 -bottom-10 h-8 cursor-pointer" onClick={() => window.location.href = './#contact'} />
     </section>
   );
 };

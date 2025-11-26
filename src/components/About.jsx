@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <section id="about" className="relative h-fit mb-30">
+    <section id="about" className="relative h-fit mb-30 lg:mt-10">
       <p className="text-center section-text-p1">Get To Know More</p>
       <h1 className="text-[3rem] font-bold text-center mb-12">About Me</h1>
       
@@ -22,15 +22,9 @@ const About = () => {
               <p className="text-gray">B.E Bachelors Degree</p>
             </div>
           </div>
-
-          <div className="text-justify lg:text-center text-gray p-4">
-            <p>
-              Eager to join an innovative organization where I can apply my knowledge and skills for the development of the organization and also expand my skills.
-            </p>
-          </div>
         </div>
       </div>
-      <img src="./assets/arrow.png" alt="Arrow" className="absolute right-0 bottom-10 h-8 cursor-pointer" onClick={() => window.location.href = './#experience'} />
+      <img src="./assets/arrow.png" alt="Arrow" className="absolute right-0 -bottom-10 h-8 cursor-pointer" onClick={() => window.location.href = './#experience'} />
     </section>
   );
 };
