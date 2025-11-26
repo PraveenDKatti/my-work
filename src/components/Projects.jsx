@@ -19,13 +19,13 @@ const Projects = () => {
             <h2 className="text-[1.75rem] font-bold my-4">{project.title}</h2>
             <div className="flex justify-center gap-4">
               <button 
-                className="btn font-semibold p-4 w-32 rounded-[2rem] border border-gray-light hover:bg-gray-dark hover:text-white transition-all duration-300"
+                className="btn font-semibold p-4 w-32 rounded-[2rem] border border-gray-light hover:bg-gray-800 hover:text-white transition-all duration-300"
                 onClick={() => window.open('https://github.com/')}
               >
                 Github
               </button>
               <button 
-                className="btn font-semibold p-4 w-32 rounded-[2rem] border border-gray-light hover:bg-gray-dark hover:text-white transition-all duration-300"
+                className="btn font-semibold p-4 w-32 rounded-[2rem] border border-gray-light hover:bg-gray-800 hover:text-white transition-all duration-300"
                 onClick={() => window.open('https://github.com/')}
               >
                 Live Demo
