@@ -23,7 +23,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="relative h-fit mb-40">
+    <section id="skills" className="relative h-fit mb-30">
       <p className="text-center text-gray">Explore My</p>
       <h1 className="text-[3rem] font-bold text-center mb-12">Skills</h1>
       
