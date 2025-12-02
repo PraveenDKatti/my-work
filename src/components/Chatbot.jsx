@@ -7,16 +7,16 @@ const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [isSending, setIsSending] = useState(false);
-  
+
   // State for user details
   const [userInfo, setUserInfo] = useState({ name: "", email: "" });
-  
+
   // Steps: 
   // 0 = Name
   // 1 = Email
   // 2 = General Chat (Answering FAQs, no email)
   // 3 = Message Mode (Next input will be sent as email)
-  const [chatStep, setChatStep] = useState(0); 
+  const [chatStep, setChatStep] = useState(0);
 
   const [messages, setMessages] = useState([
     { sender: "bot", text: "Hi! Welcome to Praveen's Portfolio. Before we start, may I know your name?" }
@@ -32,17 +32,44 @@ const Chatbot = () => {
 
   // --- YOUR FAQ LOGIC ---
   function getAnswer(text) {
+
     const lowerText = text.toLowerCase();
+
+    const skillRatings = {
+      javascript: 5,
+      python: 3,
+      java: 3,
+      express: 4,
+      nodejs: 4,
+      git: 4,
+      github: 4,
+      mongodb: 3,
+      react: 4,
+      typescript: 2
+    };
+    const rateKeywords = ["rate", "rating", "evaluate", "score"];
+    const isRating = rateKeywords.some(word => text.includes(word))
 
     // Specific Portfolio Questions
     if (lowerText.includes("project") || lowerText.includes("work"))
       return "You can view Praveen’s projects in the ‘Projects’ section — they include React, Node.js, and MERN stack apps 🚀.";
     if (lowerText.includes("about"))
       return "Praveen is a Computer Science Engineer passionate about building modern web apps using React and Node.js 💻.";
-    
+
     // --- FAQ responses ---
-    if (lowerText.includes("skills"))
+    if (isRating && text.includes("skill")) {
+      return Object.entries(skillRatings).map(([skill, rating]) => (
+          <div key={skill} className="flex items-center justify-between p-1">
+            <span className="font-medium">{skill}</span>
+            <span className="ml-2 font-semibold">{rating}/5</span>
+          </div>
+        ))
+    }
+    if (lowerText.includes("skill"))
       return "He’s skilled in React, Node.js, Express, MongoDB, Tailwind CSS, and JavaScript ⚛️.";
+    if (text.includes("stack") || text.includes("tech stack")){
+      return "He is skilled with MERN stack"
+    }
     if (lowerText.includes("education") || lowerText.includes("college"))
       return "He completed his B.E. in Computer Science and Engineering 🎓.";
     if (lowerText.includes("experience"))
@@ -62,9 +89,9 @@ const Chatbot = () => {
       setUserInfo({ ...userInfo, name: text });
       setChatStep(1);
       setTimeout(() => {
-        setMessages(prev => [...prev, { 
-            sender: "bot", 
-            text: `Nice to meet you, ${text}! What is your email address?` 
+        setMessages(prev => [...prev, {
+          sender: "bot",
+          text: `Nice to meet you, ${text}! What is your email address?`
         }]);
       }, 500);
       return;
@@ -73,11 +100,11 @@ const Chatbot = () => {
     // --- STEP 1: CAPTURE EMAIL ---
     if (chatStep === 1) {
       setUserInfo(prev => ({ ...prev, email: text })); // Ensure state updates correctly
-      setChatStep(2); 
+      setChatStep(2);
       setTimeout(() => {
-        setMessages(prev => [...prev, { 
-            sender: "bot", 
-            text: "Thanks! I've saved your details. You can now ask me about skills, projects, or say 'leave a message' to send an email." 
+        setMessages(prev => [...prev, {
+          sender: "bot",
+          text: "Thanks! I've saved your details. You can now ask me about skills, projects, or say 'leave a message' to send an email."
         }]);
       }, 500);
       return;
@@ -86,14 +113,14 @@ const Chatbot = () => {
     // --- STEP 2: GENERAL CHAT (No Email Sent) ---
     if (chatStep === 2) {
       const lowerText = text.toLowerCase();
-      
+
       // Check if user WANTS to send a message
       if (lowerText.includes("message") || lowerText.includes("contact") || lowerText.includes("email") || lowerText.includes("leave")) {
         setChatStep(3); // Switch to Message Mode
         setTimeout(() => {
-          setMessages(prev => [...prev, { 
-            sender: "bot", 
-            text: "Sure! Please type the message you want to send to Praveen below. 👇" 
+          setMessages(prev => [...prev, {
+            sender: "bot",
+            text: "Sure! Please type the message you want to send to Praveen below. 👇"
           }]);
         }, 500);
         return;
@@ -129,8 +156,8 @@ const Chatbot = () => {
     emailjs.send("service_40dvzss", "template_b33pg1o", templateParams, "ZQTdsFiljIHUxkXG0")
       .then(() => {
         setTimeout(() => {
-             setMessages(prev => [...prev, { sender: "bot", text: "Message sent successfully! ✅ Praveen will reply to " + userInfo.email }]);
-             setIsSending(false);
+          setMessages(prev => [...prev, { sender: "bot", text: "Message sent successfully! ✅ Praveen will reply to " + userInfo.email }]);
+          setIsSending(false);
         }, 1000);
       })
       .catch((err) => {
@@ -151,7 +178,7 @@ const Chatbot = () => {
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <button onClick={toggleChatbot} className="rounded-full bg-indigo-500 p-3 text-white shadow-lg hover:bg-indigo-700 transition-all focus:outline-none">
-         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
 
       {isOpen && (
@@ -173,21 +200,21 @@ const Chatbot = () => {
           </div>
 
           <div className="flex items-center gap-2 border-t p-3 bg-white">
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={userInput}
               disabled={isSending}
               // Placeholder changes based on the step
               placeholder={chatStep === 0 ? "Enter your Name..." : chatStep === 1 ? "Enter your Email..." : chatStep === 3 ? "Type your message to send..." : "Ask me anything..."}
               className="flex-1 rounded-full border px-4 py-2 text-sm outline-none focus:border-indigo-500 disabled:bg-gray-100"
-              onKeyDown={(e) => e.key === "Enter" && handleSubmit()} 
+              onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
               onChange={(e) => setUserInput(e.target.value)}
             />
-            
-            <button 
-                onClick={handleSubmit} 
-                disabled={isSending} 
-                className="rounded-full bg-indigo-500 p-2 text-white hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed focus:outline-none"
+
+            <button
+              onClick={handleSubmit}
+              disabled={isSending}
+              className="rounded-full bg-indigo-500 p-2 text-white hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed focus:outline-none"
             >
               {isSending ? <Loader2 size={20} className="animate-spin" /> : <SendHorizontal size={20} />}
             </button>
