@@ -2,7 +2,7 @@ const Hero = () => {
   const openPdf = () => window.open('./assets/PraveenKatti.pdf');
   
   return (
-    <section id="profile" className="flex flex-col lg:flex-row justify-center items-center gap-10 h-[80vh] pt-[4vh] lg:mt-10">
+    <section id="profile" className="flex flex-col lg:flex-row justify-center items-center gap-10 h-[80vh]">
       <div className="h-[400px] w-[400px]">
         {/* Ensure you have the image in public/assets/ */}
         <img src="./assets/profile-pic.jpg" alt="Praveen profile" className="h-full w-full object-cover rounded-full" />

@@ -33,7 +33,7 @@ const Navbar = () => {
       </nav>
 
       {/* Hamburger Nav */}
-      <nav className="flex lg:hidden justify-around items-center h-[17vh]">
+      <nav className="flex lg:hidden justify-between items-center h-[12vh]">
         <div className="text-[2rem] cursor-default">Praveen Katti</div>
         <div className="relative inline-block">
           <div 
