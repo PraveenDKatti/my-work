@@ -1,33 +1,49 @@
+import React from 'react';
+
 const Hero = () => {
-  const openPdf = () => window.open('./assets/PraveenKatti.pdf');
   
   return (
-    <section id="profile" className="flex flex-col lg:flex-row justify-center items-center gap-10 h-[80vh]">
-      <div className="h-[400px] w-[400px]">
-        {/* Ensure you have the image in public/assets/ */}
-        <img src="./assets/profile-pic.jpg" alt="Praveen profile" className="h-full w-full object-cover rounded-full" />
-      </div>
-      
-      <div className="text-center self-center">
-        <p className="font-semibold text-gray mb-1">Hello I'm</p>
-        <h1 className="text-[3rem] font-bold mb-4">Praveen Katti</h1>
-        <p className="text-[1.75rem] font-semibold text-gray mb-4">MERN Stack Developer</p>
+    <section id="profile" className="relative flex justify-center items-center p-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
-        <div className="flex justify-center gap-4 mb-4">
-          <button 
-            className="btn font-semibold p-4 w-36 rounded-[2rem] border border-gray-800 hover:bg-gray-800 hover:text-white transition-all duration-300"
-            onClick={openPdf}
-          >
-            Download CV
-          </button>
-          <button 
-            className="btn font-semibold p-4 w-36 rounded-[2rem] bg-gray-800 text-white hover:bg-black transition-all duration-300"
-            onClick={() => window.location.href = './#contact'}
-          >
-            Contact Info
-          </button>
+        {/* LEFT: Text Content */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 space-y-6">
+          
+          <p className="font-semibold text-gray-500 text-lg tracking-wide uppercase">
+            Hello, I'm
+          </p>
+          
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-tight">
+            Praveen Katti
+          </h1>
         </div>
+
+        {/* RIGHT: Image (Clean Geometric Style) */}
+        <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+          <div className="relative group">
+            
+            {/* Background Offset Square (The shadow effect) */}
+            <div className="absolute top-4 left-4 w-full h-full bg-gray-200 rounded-3xl -z-10 group-hover:bg-gray-300 transition-colors duration-300"></div>
+            
+            {/* Main Image Container */}
+            <div className="w-72 h-72 md:w-[450px] md:h-[450px] rounded-3xl overflow-hidden border-2 border-white shadow-xl">
+              <img 
+                src="./assets/profile-pic.jpg" 
+                alt="Praveen Katti" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+              />
+            </div>
+
+          </div>
+        </div>
+
       </div>
+
+      {/* Scroll Down Indicator */}
+      <div className="absolute right-8 bottom-4 animate-bounce cursor-pointer opacity-50 hover:opacity-100" onClick={() => window.location.href = './#about'}>
+         <img src="./assets/arrow.png" alt="Scroll Down" className="h-6 w-6" />
+      </div>
+
     </section>
   );
 };

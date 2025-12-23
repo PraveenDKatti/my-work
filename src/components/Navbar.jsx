@@ -1,68 +1,82 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  // Add shadow when scrolling down
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "#about", text: "About" },
     { href: "#experience", text: "Experience" },
-    { href: "#skills", text: "Skills" },
     { href: "#projects", text: "Projects" },
-    { href: "#contact", text: "Contact" },
+    { href: "#skills", text: "Skills" },
   ];
 
   return (
-    <>
-      {/* Desktop Nav */}
-      <nav className="hidden lg:flex justify-between items-center h-[17vh] w-full">
-        <div className="text-[2rem] cursor-default">Praveen Katti</div>
-        <ul className="flex gap-8 list-none text-[1.5rem]">
+    <nav className='top-0 w-full z-50 transition-all duration-300 bg-transparent py-6'>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        
+        {/* BRAND / LOGO - Solves the name repetition issue */}
+        <a href="#" className="text-2xl font-black tracking-tighter hover:text-gray-600 transition-colors">
+          &lt;PK /&gt;
+        </a>
+
+        {/* DESKTOP NAV */}
+        <ul className="hidden lg:flex gap-10 items-center">
           {navLinks.map((link) => (
             <li key={link.text}>
               <a 
                 href={link.href} 
-                className="text-black decoration-white decoration-2 hover:text-gray hover:underline hover:underline-offset-[1rem] hover:decoration-[rgb(181,181,181)] transition-all duration-300"
+                className="text-gray-700 font-medium text-lg relative group overflow-hidden"
               >
                 {link.text}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               </a>
             </li>
           ))}
+          {/* specialized CTA button in nav */}
+          <li>
+            <a href="#contact" className="px-6 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-all">
+              Let's Talk
+            </a>
+          </li>
         </ul>
-      </nav>
 
-      {/* Hamburger Nav */}
-      <nav className="flex lg:hidden justify-between items-center h-[12vh]">
-        <div className="text-[2rem] cursor-default">Praveen Katti</div>
-        <div className="relative inline-block">
-          <div 
-            className={`flex flex-col justify-between h-[24px] w-[30px] cursor-pointer transition-all duration-300 ${menuOpen ? "open" : ""}`} 
-            onClick={toggleMenu}
-          >
-            <span className={`w-full h-[2px] bg-black transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[10px]" : ""}`}></span>
-            <span className={`w-full h-[2px] bg-black transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}></span>
-            <span className={`w-full h-[2px] bg-black transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[11px]" : ""}`}></span>
-          </div>
-          
-          <div className={`absolute top-[150%] right-0 bg-white w-max overflow-hidden transition-all duration-300 shadow-xl rounded-lg ${menuOpen ? "max-h-[300px] p-4" : "max-h-0"}`}>
-            <ul className="list-none">
-              {navLinks.map((link) => (
-                <li key={link.text}>
-                  <a 
-                    href={link.href} 
-                    onClick={toggleMenu}
-                    className="block p-2 text-center text-[1.5rem] text-black hover:text-gray transition-all duration-300"
-                  >
-                    {link.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
+        {/* MOBILE HAMBURGER */}
+        <div className="lg:hidden z-50" onClick={() => setMenuOpen(!menuOpen)}>
+          <div className="space-y-2 cursor-pointer">
+            <span className={`block w-8 h-0.5 bg-black transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2.5" : ""}`}></span>
+            <span className={`block w-8 h-0.5 bg-black transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}></span>
+            <span className={`block w-8 h-0.5 bg-black transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2.5" : ""}`}></span>
           </div>
         </div>
-      </nav>
-    </>
+
+        {/* MOBILE MENU OVERLAY */}
+        <div className={`fixed inset-0 bg-white flex flex-col items-center justify-center transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+          <ul className="text-center space-y-8">
+            {navLinks.map((link) => (
+              <li key={link.text}>
+                <a 
+                  href={link.href} 
+                  onClick={() => setMenuOpen(false)}
+                  className="text-3xl font-bold text-gray-800 hover:text-gray-500"
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 };
 
