@@ -1,17 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  // Add shadow when scrolling down
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navLinks = [
     { href: "#about", text: "About" },
@@ -51,7 +41,7 @@ const Navbar = () => {
         </ul>
 
         {/* MOBILE HAMBURGER */}
-        <div className="lg:hidden z-50" onClick={() => setMenuOpen(!menuOpen)}>
+        <div className="relative lg:hidden z-50" onClick={() => setMenuOpen(!menuOpen)}>
           <div className="space-y-2 cursor-pointer">
             <span className={`block w-8 h-0.5 bg-black transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2.5" : ""}`}></span>
             <span className={`block w-8 h-0.5 bg-black transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}></span>
@@ -60,7 +50,7 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU OVERLAY */}
-        <div className={`fixed inset-0 bg-white flex flex-col items-center justify-center transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+        <div className={`absolute z-40 inset-0 bg-white flex flex-col items-center justify-center transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"} ${menuOpen ? "block" : "hidden"}`}>
           <ul className="text-center space-y-8">
             {navLinks.map((link) => (
               <li key={link.text}>

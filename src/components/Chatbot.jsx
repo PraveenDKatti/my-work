@@ -176,7 +176,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="fixed bottom-10 right-10 md:bottom-4 right-4 z-50">
       <button onClick={toggleChatbot} className="rounded-full bg-indigo-500 p-3 text-white shadow-lg hover:bg-indigo-700 transition-all focus:outline-none">
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
