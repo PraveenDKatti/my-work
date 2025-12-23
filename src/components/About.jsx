@@ -24,13 +24,14 @@ const About = () => {
           <p className="leading-relaxed text-lg">
             I am a results-driven developer with hands-on experience building responsive web applications and 
             scalable backend services. My expertise lies in the <strong>MERN stack</strong> (MongoDB, Express, 
-            React, Node.js), where I enjoy crafting clean, efficient code to solve real-world problems 7.
+            React, Node.js), where I enjoy contributing to open-source crafting clean, efficient code to solve real-world problems.
           </p>
 
           <p className="leading-relaxed text-lg">
-            Currently based in <strong>Vijayapura, Karnataka</strong> , I specialize in engineering robust 
-            REST APIs and creating seamless user interfaces. Whether it's optimizing performance or architecting 
-            a new database schema, I am passionate about every layer of development.
+            With a B.E. in <b>Computer Science Engineering</b>, I have honed my skills in <b>JavaScript (ES6+), 
+            React.js, and Node.js</b>. I specialize in creating seamless user experiences using modern UI 
+            frameworks like TailwindCSS and engineering robust RESTful APIs. I am passionate about every layer 
+            of development.
           </p>
         </div>
 
