@@ -85,6 +85,10 @@ const About = () => {
           </div>
         </div>
       </div>
+      {/* Scroll Down Indicator */}
+      <div className="absolute right-8 bottom-4 animate-bounce cursor-pointer opacity-50 hover:opacity-100" onClick={() => window.location.href = './#skills'}>
+         <img src="./assets/arrow.png" alt="Scroll Down" className="h-6 w-6" />
+      </div>
     </section>
   );
 };
