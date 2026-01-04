@@ -59,7 +59,7 @@ const Skills = () => {
   ];
 
   return (
-    <div className="bg-[#f8fafc] p-6 min-h-screen text-slate-800 font-sans selection:bg-cyan-100">
+    <div id='skills' className="bg-[#f8fafc] p-6 min-h-screen text-slate-800 font-sans selection:bg-cyan-100">
       <div className="max-w-7xl mx-auto">
 
         {/* Header Section */}
