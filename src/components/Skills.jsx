@@ -92,9 +92,6 @@ const Skills = () => {
 
               {/* Layer Heading - Optimized for mobile tap targets */}
               <div className="flex items-center gap-3 border-b-2 border-slate-900 pb-3 group-hover/layer:border-cyan-500 transition-colors duration-500">
-                <span className="text-[10px] font-black tracking-tighter text-slate-300">
-                  0{catIndex + 1}
-                </span>
                 <h2 className="text-xs font-black uppercase text-slate-900 tracking-widest leading-none">
                   {category.layer}
                 </h2>
@@ -113,7 +110,7 @@ const Skills = () => {
                         </span>
                       </div>
                       <span className="text-[10px] font-black font-mono text-cyan-600">
-                        {skill.level * 10}%
+                        {skill.level}/10
                       </span>
                     </div>
 
