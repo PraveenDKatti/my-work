@@ -23,27 +23,25 @@ const About = () => {
           
           {/* LEFT: Narrative Bio (7 Columns) */}
           <div className="lg:col-span-7 space-y-8">
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800 leading-tight">
-              I'm a MERN Stack Developer driven by 
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10 text-slate-900 underline decoration-cyan-400 decoration-4 underline-offset-4">impactful code.</span>
-              </span>
-            </h3>
-            
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <p>
                 I am a results-driven developer with hands-on experience building 
                 responsive web applications and scalable backend services. 
-                My expertise lies in the <span className="text-slate-900 font-semibold italic">MERN stack</span>, 
+                My expertise lies in the MERN stack, 
                 where I enjoy crafting clean, efficient code to solve real-world problems.
               </p>
 
               <p>
-                With a B.E. in <span className="text-slate-900 font-semibold italic">Computer Science Engineering</span>, 
-                I have honed my skills in <span className="text-slate-900 font-semibold italic">JavaScript (ES6+), React.js, and Node.js</span>. I specialize 
+                With a B.E. in Computer Science Engineering, 
+                I have honed my skills in JavaScript (ES6+), React.js, and Node.js. I specialize 
                 in creating seamless user experiences using modern UI frameworks like TailwindCSS and 
                 engineering robust RESTful APIs.
               </p>
+            </div>
+            
+            {/* Quote Block */}
+            <div className="mt-4 p-5 bg-slate-50 border-l-4 border-slate-900 italic text-slate-500 text-sm leading-relaxed shadow-sm">
+              "Focused on problem-solving and clean coding to build digital products that matter." 
             </div>
           </div>
 
@@ -76,11 +74,6 @@ const About = () => {
                   <p className="text-sm text-slate-500 font-medium leading-tight mt-1">Full-Stack Web Development</p>
                 </div>
               </div>
-            </div>
-            
-            {/* Quote Block */}
-            <div className="mt-4 p-5 bg-slate-50 border-l-4 border-slate-900 italic text-slate-500 text-sm leading-relaxed shadow-sm">
-              "Focused on problem-solving and clean coding to build digital products that matter." 
             </div>
           </div>
         </div>

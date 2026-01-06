@@ -23,7 +23,7 @@ const Skills = () => {
       skills: [
         { name: "NodeJS", level: 7, icon: "devicon-nodejs-plain colored" },
         { name: "Python", level: 6, icon: "devicon-python-plain colored" },
-        { name: "Next.js", level: 8, icon: "devicon-nextjs-original" },
+        { name: "Next.js", level: 8, icon: "devicon-nextjs-plain colored" },
       ]
     },
     {
@@ -38,8 +38,8 @@ const Skills = () => {
       layer: "5. DevOps / Cloud",
       skills: [
         { name: "Docker", level: 4, icon: "devicon-docker-plain colored" },
-        { name: "AWS", level: 4, icon: "devicon-amazonwebservices-original colored" },
-        { name: "Vercel", level: 8, icon: "devicon-nextjs-original" },
+        { name: "AWS", level: 4, icon: "devicon-amazonwebservices-plain-wordmark" },
+        { name: "Vercel", level: 8, icon: "devicon-vercel-original" },
       ]
     },
     {
@@ -109,7 +109,7 @@ const Skills = () => {
                           {skill.name}
                         </span>
                       </div>
-                      <span className="text-[10px] font-black font-mono text-cyan-600">
+                      <span className="text-[10px] font-black font-mono text-black">
                         {skill.level}/10
                       </span>
                     </div>
