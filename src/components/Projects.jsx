@@ -15,7 +15,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="relative h-fit">
+    <section id="projects" className="relative max-w-7xl mx-auto h-fit">
       <p className="text-center text-gray">Browse My Recent</p>
       <h1 className="text-[3rem] font-bold text-center mb-12">Projects</h1>
       
@@ -45,7 +45,12 @@ const Projects = () => {
           </div>
         ))}
       </div>
-      <img src="./assets/arrow.png" alt="Arrow" className="absolute right-0 -bottom-10 h-8 cursor-pointer" onClick={() => window.location.href = './#contact'} />
+      <div 
+        className="absolute right-8 bottom-4 animate-bounce cursor-pointer opacity-50 hover:opacity-100" 
+        onClick={() => window.location.href = './#contact'}
+      >
+         <img src="./assets/arrow.png" alt="Scroll Down" className="h-6 w-6" />
+      </div>
     </section>
   );
 };

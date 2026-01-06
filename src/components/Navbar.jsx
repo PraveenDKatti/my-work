@@ -34,7 +34,9 @@ const Navbar = () => {
           ))}
           {/* specialized CTA button in nav */}
           <li>
-            <a href="#contact" className="px-6 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-all">
+            <a 
+              href="#contact" 
+              className="px-6 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-all">
               Let's Talk
             </a>
           </li>
@@ -50,7 +52,7 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU OVERLAY */}
-        <div className={`absolute z-40 inset-0 bg-white flex flex-col items-center justify-center transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"} ${menuOpen ? "block" : "hidden"}`}>
+        <div className={`lg:hidden absolute z-40 inset-0 bg-white flex flex-col items-center justify-center transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"} ${menuOpen ? "block" : "hidden"}`}>
           <ul className="text-center space-y-8">
             {navLinks.map((link) => (
               <li key={link.text}>
@@ -63,6 +65,11 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
+            <li>
+              <a href="#contact" className="text-3xl font-bold text-gray-800 hover:text-gray-500">
+                Let's Talk
+              </a>
+            </li>
           </ul>
         </div>
       </div>
