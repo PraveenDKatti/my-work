@@ -10,14 +10,14 @@ const Contact = () => {
 
         <div className="flex flex-col lg:flex-row justify-center items-center rounded-[2rem] border border-gray-light p-2 md:gap-8 w-fit mx-auto">
           <div className="flex items-center gap-2">
-            <img src="./assets/email.png" alt="Email" className="h-8 bg-white rounded-full cursor-default" />
+            <img src="./assets/email.png" alt="Email" className="h-8 cursor-default" />
             <p className="text-slate-600 font-mono text-xs mt-1 uppercase tracking-[0.1em]">
               <a href="mailto:praveendk25@gmail.com">praveendk25@gmail.com</a>
             </p>
           </div>
 
           <div className="flex items-center gap-2">
-            <img src="./assets/linkedin.png" alt="LinkedIn" className="h-8 bg-white rounded-full cursor-default" />
+            <img src="./assets/linkedin.png" alt="LinkedIn" className="h-8 cursor-default" />
             <p className="text-slate-600 font-mono text-xs mt-1 uppercase tracking-[0.1em]">
               <a href="https://www.linkedin.com/in/praveenkatti">LinkedIn</a>
             </p>
