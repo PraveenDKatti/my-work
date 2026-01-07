@@ -1,24 +1,24 @@
 const Contact = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 h-screen bg-black text-white">
+    <div className="grid grid-cols-1 md:grid-cols-2 h-screen bg-slate-100">
       {/* Contact Information */}
       <section id="contact" className="flex flex-col justify-center text-center">
         <div className="mb-10">
           <h1 className="text-slate-600 text-4xl tracking-tighter uppercase">Contact Me</h1>
-          <p className="text-gray-300 font-mono text-xs mt-1 uppercase tracking-[0.3em]">Get in Touch</p>
+          <p className="text-slate-600 font-mono text-xs mt-1 uppercase tracking-[0.3em]">Get in Touch</p>
         </div>
 
         <div className="flex flex-col lg:flex-row justify-center items-center rounded-[2rem] border border-gray-light p-2 md:gap-8 w-fit mx-auto">
           <div className="flex items-center gap-2">
             <img src="./assets/email.png" alt="Email" className="h-8 bg-white rounded-full cursor-default" />
-            <p className="text-gray-300 font-mono text-xs mt-1 uppercase tracking-[0.1em]">
+            <p className="text-slate-600 font-mono text-xs mt-1 uppercase tracking-[0.1em]">
               <a href="mailto:praveendk25@gmail.com">praveendk25@gmail.com</a>
             </p>
           </div>
 
           <div className="flex items-center gap-2">
             <img src="./assets/linkedin.png" alt="LinkedIn" className="h-8 bg-white rounded-full cursor-default" />
-            <p className="text-gray-300 font-mono text-xs mt-1 uppercase tracking-[0.1em]">
+            <p className="text-slate-600 font-mono text-xs mt-1 uppercase tracking-[0.1em]">
               <a href="https://www.linkedin.com/in/praveenkatti">LinkedIn</a>
             </p>
           </div>
@@ -28,13 +28,13 @@ const Contact = () => {
       {/* other half */}
       <div className="md:h-screen">
         {/* other half */}
-        <div className="flex flex-col justify-center items-center bg-gray-900 px-8 h-full">
+        <div className="flex flex-col justify-center items-center px-8 h-full">
           <div className="text-center max-w-md">
             {/* Illustration */}
             <img
               src="./assets/endtoend.png"
               alt="Contact Illustration"
-              className="w-16 bg-white rounded-full mx-auto mb-6"
+              className="w-16 mx-auto mb-6"
             />
 
             {/* Main Heading */}
@@ -58,18 +58,18 @@ const Contact = () => {
             </div>
 
             {/* Fun Stats */}
-            <div className="flex justify-center gap-6 mb-6 text-gray-300 font-mono text-xs uppercase tracking-wide">
+            <div className="flex justify-center gap-6 mb-6 text-gray-500 font-mono text-xs uppercase tracking-wide">
               <div className="flex flex-col items-center">
                 <span className="text-slate-500 text-sm">Projects</span>
-                <span className="text-white font-semibold">4+</span>
+                <span className="font-semibold">4+</span>
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-slate-500 text-sm">Experience</span>
-                <span className="text-white font-semibold">hands-on</span>
+                <span className="font-semibold">hands-on</span>
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-slate-500 text-sm">Ideas</span>
-                <span className="text-white font-semibold">Many</span>
+                <span className="font-semibold">Many</span>
               </div>
             </div>
           </div>
