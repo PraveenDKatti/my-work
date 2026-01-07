@@ -1,6 +1,6 @@
 const Contact = () => {
   return (
-    <div className="grid grid-cols-2 h-screen bg-black text-white">
+    <div className="grid grid-cols-1 md:grid-cols-2 h-screen bg-black text-white">
       {/* Contact Information */}
       <section id="contact" className="flex flex-col justify-center text-center">
         <div className="mb-10">
@@ -8,15 +8,15 @@ const Contact = () => {
           <p className="text-gray-300 font-mono text-xs mt-1 uppercase tracking-[0.3em]">Get in Touch</p>
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-center items-center rounded-[2rem] border border-gray-light gap-8 w-fit mx-auto">
-          <div className="flex items-center gap-2 m-2">
+        <div className="flex flex-col lg:flex-row justify-center items-center rounded-[2rem] border border-gray-light p-2 md:gap-8 w-fit mx-auto">
+          <div className="flex items-center gap-2">
             <img src="./assets/email.png" alt="Email" className="h-8 bg-white rounded-full cursor-default" />
             <p className="text-gray-300 font-mono text-xs mt-1 uppercase tracking-[0.1em]">
               <a href="mailto:praveendk25@gmail.com">praveendk25@gmail.com</a>
             </p>
           </div>
 
-          <div className="flex items-center gap-2 m-2">
+          <div className="flex items-center gap-2">
             <img src="./assets/linkedin.png" alt="LinkedIn" className="h-8 bg-white rounded-full cursor-default" />
             <p className="text-gray-300 font-mono text-xs mt-1 uppercase tracking-[0.1em]">
               <a href="https://www.linkedin.com/in/praveenkatti">LinkedIn</a>
@@ -26,7 +26,7 @@ const Contact = () => {
       </section>
 
       {/* other half */}
-      <div className="h-screen">
+      <div className="md:h-screen">
         {/* other half */}
         <div className="flex flex-col justify-center items-center bg-gray-900 px-8 h-full">
           <div className="text-center max-w-md">
