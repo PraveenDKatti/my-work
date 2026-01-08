@@ -9,13 +9,17 @@ const Footer = () => {
   return (
     <footer className="h-[26vh] mx-4 flex flex-col justify-center items-center">
       <nav className="mb-4">
-        <ul className="flex gap-8 list-none text-[1.2rem]">
+        <ul className="hidden lg:flex gap-10 items-center">
           {navLinks.map((link) => (
-             <li key={link.text}>
-               <a href={link.href} className="text-black hover:text-gray hover:underline hover:underline-offset-8 decoration-gray-light transition-all duration-300">
-                 {link.text}
-               </a>
-             </li>
+            <li key={link.text}>
+              <a
+                href={link.href}
+                className="text-gray-700 font-medium text-lg relative group overflow-hidden"
+              >
+                {link.text}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black group-hover:bg-cyan-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+            </li>
           ))}
         </ul>
       </nav>
