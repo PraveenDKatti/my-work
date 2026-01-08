@@ -19,7 +19,7 @@ const Footer = () => {
           ))}
         </ul>
       </nav>
-      <p className="text-gray text-center">Copyright &#169; 2025 All Rights Reserved</p>
+      <p className="text-gray text-center">Copyright &#169; 2026 All Rights Reserved</p>
     </footer>
   );
 };

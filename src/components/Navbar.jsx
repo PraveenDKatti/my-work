@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
         {/* BRAND / LOGO - Solves the name repetition issue */}
-        <a href="#" className="text-2xl font-black tracking-tighter hover:text-gray-600 transition-colors">
+        <a href="#" className="text-2xl font-black tracking-tighter hover:text-cyan-600 transition-colors">
           &lt;PK /&gt;
         </a>
 
@@ -28,7 +28,7 @@ const Navbar = () => {
                 className="text-gray-700 font-medium text-lg relative group overflow-hidden"
               >
                 {link.text}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black group-hover:bg-cyan-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               </a>
             </li>
           ))}
@@ -36,7 +36,7 @@ const Navbar = () => {
           <li>
             <a 
               href="#contact" 
-              className="px-6 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-all">
+              className="px-6 py-2 bg-black text-white rounded-full font-medium hover:bg-cyan-600 transition-all">
               Let's Talk
             </a>
           </li>

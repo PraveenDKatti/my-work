@@ -49,7 +49,7 @@ const About = () => {
           <div className="lg:col-span-5 flex flex-col gap-5">
             
             {/* Education Card */}
-            <div className="group bg-slate-50 border border-slate-100 p-6 rounded-xl hover:bg-white hover:shadow-xl hover:border-cyan-200 transition-all duration-300">
+            <div className="group bg-slate-50 border border-slate-100 p-6 rounded-xl hover:bg-white hover:shadow-xl hover:border-cyan-600 transition-all duration-300">
               <div className="flex items-start gap-5">
                 <div className="text-2xl bg-white p-3 rounded-lg shadow-sm group-hover:bg-slate-100 group-hover:text-white transition-all">
                   🎓
@@ -63,7 +63,7 @@ const About = () => {
             </div>
 
             {/* Experience Card */}
-            <div className="group bg-slate-50 border border-slate-100 p-6 rounded-xl hover:bg-white hover:shadow-xl hover:border-cyan-200 transition-all duration-300">
+            <div className="group bg-slate-50 border border-slate-100 p-6 rounded-xl hover:bg-white hover:shadow-xl hover:border-cyan-600 transition-all duration-300">
               <div className="flex items-start gap-5">
                 <div className="text-2xl bg-white p-3 rounded-lg shadow-sm group-hover:bg-slate-100 group-hover:text-white transition-all">
                   💻

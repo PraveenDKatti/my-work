@@ -25,7 +25,7 @@ const Projects = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
         {projects.map((project, index) => (
-          <div key={index} className="flex-1 bg-slate-100 rounded-xl hover:shadow-xl hover:border hover:border-cyan-200 overflow-hidden text-center h-fit">
+          <div key={index} className="flex-1 bg-slate-50 rounded-xl hover:shadow-xl hover:border hover:border-cyan-600 overflow-hidden text-center h-fit">
             <div className="h-[200px] w-full bg-black p-4">
               <img src={project.img}
                 alt={project.title}
@@ -35,13 +35,13 @@ const Projects = () => {
               <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
               <div className="flex justify-center gap-4">
                 <button
-                  className="btn font-semibold p-2 w-24 rounded-[2rem] border border-gray-light hover:bg-gray-800 hover:text-white transition-all duration-300"
+                  className="btn font-semibold p-2 w-24 rounded-[2rem] border border-gray-light hover:bg-cyan-600 hover:text-white transition-all duration-300"
                   onClick={() => window.open(project.github)}
                 >
                   Github
                 </button>
                 <button
-                  className="btn font-semibold p-2 w-24 rounded-[2rem] border border-gray-light hover:bg-gray-800 hover:text-white transition-all duration-300"
+                  className="btn font-semibold p-2 w-24 rounded-[2rem] border border-gray-light hover:bg-cyan-600 hover:text-white transition-all duration-300"
                   onClick={() => window.open(project.liveDemo)}
                 >
                   Live
