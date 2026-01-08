@@ -74,13 +74,13 @@ const Skills = () => {
           {/* Legend Implementation */}
           <div className="flex flex-wrap gap-6 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] bg-white p-3 rounded-lg shadow-sm border border-slate-100">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-200 shadow-inner" /> Theory
+              <span className="w-2.5 h-2.5 rounded-full bg-gray-200 shadow-inner" /> Theory
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-cyan-200 shadow-inner" /> Practice
+              <span className="w-2.5 h-2.5 rounded-full bg-gray-400 shadow-inner" /> Practice
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 shadow-lg shadow-cyan-200" /> Mastery
+              <span className="w-2.5 h-2.5 rounded-full bg-gray-800 shadow-lg shadow-cyan-200" /> Mastery
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ const Skills = () => {
 
                     <div className="relative h-3 w-full bg-slate-200/70 rounded-full overflow-hidden border border-slate-200 shadow-inner">
                       <div
-                        className="absolute h-full bg-gradient-to-r from-cyan-600 to-cyan-400 rounded-full transition-all duration-1000 ease-out"
+                        className="absolute h-full bg-gradient-to-r from-gray-800 to-gray-600 rounded-full transition-all duration-1000 ease-out"
                         style={{ width: `${skill.level * 10}%` }}
                       />
                     </div>

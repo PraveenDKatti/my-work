@@ -177,21 +177,21 @@ const Chatbot = () => {
 
   return (
     <div className="fixed bottom-10 right-10 md:bottom-4 right-4 z-50">
-      <button onClick={toggleChatbot} className="rounded-full bg-indigo-500 p-3 text-white shadow-lg hover:bg-indigo-700 transition-all focus:outline-none">
+      <button onClick={toggleChatbot} className="rounded-full bg-cyan-600 p-3 text-white shadow-lg hover:bg-cyan-600 transition-all focus:outline-none">
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
 
       {isOpen && (
         <div className="absolute bottom-16 right-0 mb-2 flex h-[450px] w-80 flex-col overflow-hidden rounded-lg bg-white shadow-xl sm:w-96 border border-gray-200">
-          <div className="bg-indigo-500 p-4 text-white flex justify-between items-center">
+          <div className="bg-cyan-600 p-4 text-white flex justify-between items-center">
             <p className="font-bold">Virtual Assistant</p>
-            {isSending && <span className="text-xs bg-indigo-600 px-2 py-1 rounded animate-pulse">Sending...</span>}
+            {isSending && <span className="text-xs bg-cyan-600 px-2 py-1 rounded animate-pulse">Sending...</span>}
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
             {messages.map((msg) => (
               <div key={nanoid()} className={`mb-3 flex ${msg.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
-                <div className={`max-w-[80%] rounded-lg p-2 text-sm ${msg.sender === 'bot' ? "bg-gray-200 text-gray-800" : "bg-indigo-500 text-white"}`}>
+                <div className={`max-w-[80%] rounded-lg p-2 text-sm ${msg.sender === 'bot' ? "bg-gray-200 text-gray-800" : "bg-cyan-500 text-white"}`}>
                   <p>{msg.text}</p>
                 </div>
               </div>
@@ -206,7 +206,7 @@ const Chatbot = () => {
               disabled={isSending}
               // Placeholder changes based on the step
               placeholder={chatStep === 0 ? "Enter your Name..." : chatStep === 1 ? "Enter your Email..." : chatStep === 3 ? "Type your message to send..." : "Ask me anything..."}
-              className="flex-1 rounded-full border px-4 py-2 text-sm outline-none focus:border-indigo-500 disabled:bg-gray-100"
+              className="flex-1 rounded-full border px-4 py-2 text-sm outline-none focus:border-cyan-600 disabled:bg-gray-100"
               onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
               onChange={(e) => setUserInput(e.target.value)}
             />
@@ -214,7 +214,7 @@ const Chatbot = () => {
             <button
               onClick={handleSubmit}
               disabled={isSending}
-              className="rounded-full bg-indigo-500 p-2 text-white hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed focus:outline-none"
+              className="rounded-full bg-cyan-600 p-2 text-white hover:bg-cyan-600 disabled:bg-gray-400 disabled:cursor-not-allowed focus:outline-none"
             >
               {isSending ? <Loader2 size={20} className="animate-spin" /> : <SendHorizontal size={20} />}
             </button>
