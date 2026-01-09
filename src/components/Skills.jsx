@@ -59,7 +59,7 @@ const Skills = () => {
   ];
 
   return (
-    <div id='skills' className="relative bg-[#f8fafc] p-6 min-h-screen text-slate-800 font-sans selection:bg-cyan-100">
+    <div id='skills' className="relative p-6 min-h-screen text-slate-800 font-sans selection:bg-cyan-100">
       <div className="max-w-7xl mx-auto">
 
         {/* Header Section */}
@@ -126,10 +126,6 @@ const Skills = () => {
             </div>
           ))}
         </div>
-      </div>
-      {/* Scroll Down Indicator */}
-      <div className="absolute right-8 bottom-4 animate-bounce cursor-pointer opacity-50 hover:opacity-100" onClick={() => window.location.href = './#projects'}>
-         <img src="./assets/arrow.png" alt="Scroll Down" className="h-6 w-6" />
       </div>
     </div>
   );
