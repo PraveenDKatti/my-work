@@ -12,7 +12,24 @@ const Projects = () => {
       github: "https://github.com/PraveenDKatti/habitore",
       liveDemo: "https://habitore.vercel.app/",
     },
-    { title: "Project Three", img: "./assets/project-3.png" },
+    { 
+      title: "Vibernet (youtube-clone)", 
+      img: "./assets/vibernet.png",
+      github: "",
+      liveDemo: ""
+     },
+    { 
+      title: "StockPulse", 
+      img: "./assets/stockpulse.png",
+      github: "",
+      liveDemo: ""
+     },
+    { 
+      title: "ChitChat", 
+      img: "./assets/chitchat.png",
+      github: "",
+      liveDemo: ""
+     },
   ];
 
   return (
