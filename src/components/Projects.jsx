@@ -15,8 +15,8 @@ const Projects = () => {
     { 
       title: "Vibernet (youtube-clone)", 
       img: "./assets/vibernet.png",
-      github: "",
-      liveDemo: ""
+      github: "https://github.com/PraveenDKatti/vibernet-frontend",
+      liveDemo: "https://vibernet.vercel.app/"
      },
     { 
       title: "StockPulse", 
