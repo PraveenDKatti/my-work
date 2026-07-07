@@ -1,10 +1,10 @@
 const Projects = () => {
   const projects = [
     {
-      title: "Teerex",
-      img: "./assets/teerexmark.png",
-      github: "https://github.com/PraveenDKatti/geektrust/tree/main/TeeRex-Store",
-      liveDemo: "https://teerexmark.netlify.app/"
+      title: "DareIt",
+      img: "./assets/dareit.png",
+      github: "https://github.com/PraveenDKatti/geektrust/tree/main/dareit-app",
+      liveDemo: "https://dareit-app.vercel.app/"
     },
     {
       title: "Habitore",
@@ -18,6 +18,12 @@ const Projects = () => {
       github: "https://github.com/PraveenDKatti/vibernet-frontend",
       liveDemo: "https://vibernet.vercel.app/"
      },
+     {
+      title: "Teerex",
+      img: "./assets/teerexmark.png",
+      github: "https://github.com/PraveenDKatti/geektrust/tree/main/TeeRex-Store",
+      liveDemo: "https://teerexmark.netlify.app/"
+    },
     { 
       title: "StockPulse", 
       img: "./assets/stockpulse.png",
