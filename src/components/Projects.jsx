@@ -6,12 +6,6 @@ const Projects = () => {
       github: "https://github.com/PraveenDKatti/geektrust/tree/main/dareit-app",
       liveDemo: "https://dareit-app.vercel.app/"
     },
-    {
-      title: "Habitore",
-      img: "./assets/habitore.png",
-      github: "https://github.com/PraveenDKatti/habitore",
-      liveDemo: "https://habitore.vercel.app/",
-    },
     { 
       title: "Vibernet (youtube-clone)", 
       img: "./assets/vibernet.png",
@@ -23,6 +17,12 @@ const Projects = () => {
       img: "./assets/teerexmark.png",
       github: "https://github.com/PraveenDKatti/geektrust/tree/main/TeeRex-Store",
       liveDemo: "https://teerexmark.netlify.app/"
+    },
+    {
+      title: "Habitore",
+      img: "./assets/habitore.png",
+      github: "https://github.com/PraveenDKatti/habitore",
+      liveDemo: "https://habitore.vercel.app/",
     },
     { 
       title: "StockPulse", 
