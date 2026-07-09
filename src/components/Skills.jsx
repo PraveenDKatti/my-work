@@ -34,7 +34,7 @@ const Skills = () => {
     {
       layer: "DevOps & Cloud",
       icon: Cpu,
-      skills: ["Docker", "AWS (S3/EC2)", "Vercel", "GitHub Actions", "CI/CD Pipelines"]
+      skills: ["Vercel", "GitHub Actions"]
     },
     {
       layer: "Version Control & Workflow",
