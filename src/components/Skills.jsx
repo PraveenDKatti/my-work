@@ -1,134 +1,162 @@
 import React from 'react';
+import { 
+  Code2, 
+  Workflow, 
+  Layers, 
+  Database, 
+  Terminal, 
+  Palette, 
+  Cpu 
+} from 'lucide-react';
 
 const Skills = () => {
   const stackLayers = [
     {
-      layer: "1. UI / Frontend",
-      skills: [
-        { name: "React", level: 8, icon: "devicon-react-original colored" },
-        { name: "HTML/CSS", level: 10, icon: "devicon-html5-plain colored" },
-        { name: "Tailwind", level: 9, icon: "devicon-tailwindcss-original colored" },
-      ]
+      layer: "Frameworks & Languages",
+      icon: Code2,
+      skills: ["React", "HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "Next.js", "Python"]
     },
     {
-      layer: "2. State & Logic",
-      skills: [
-        { name: "JavaScript", level: 9, icon: "devicon-javascript-plain colored" },
-        { name: "TypeScript", level: 5, icon: "devicon-typescript-plain colored" },
-        { name: "Redux/Zustand", level: 7, icon: "devicon-react-original" },
-      ]
+      layer: "State & Logic",
+      icon: Workflow,
+      skills: ["Redux Toolkit", "Zustand", "React Context API"]
     },
     {
-      layer: "3. API / Backend",
-      skills: [
-        { name: "NodeJS", level: 7, icon: "devicon-nodejs-plain colored" },
-        { name: "Python", level: 6, icon: "devicon-python-plain colored" },
-        { name: "Next.js", level: 8, icon: "devicon-nextjs-plain colored" },
-      ]
+      layer: "Architecture & API",
+      icon: Layers,
+      skills: ["REST APIs", "Node.js", "Express", "Component-Based Design", "MVC Architecture"]
     },
     {
-      layer: "4. Database",
-      skills: [
-        { name: "MongoDB", level: 6, icon: "devicon-mongodb-plain colored" },
-        { name: "PostgreSQL", level: 5, icon: "devicon-postgresql-plain colored" },
-        { name: "Firebase", level: 7, icon: "devicon-firebase-plain colored" },
-      ]
+      layer: "Database Systems",
+      icon: Database,
+      skills: ["MongoDB", "PostgreSQL", "Firebase Firestore", "Mongoose"]
     },
     {
-      layer: "5. DevOps / Cloud",
-      skills: [
-        { name: "Docker", level: 4, icon: "devicon-docker-plain colored" },
-        { name: "AWS", level: 4, icon: "devicon-amazonwebservices-plain-wordmark" },
-        { name: "Vercel", level: 8, icon: "devicon-vercel-original" },
-      ]
+      layer: "DevOps & Cloud",
+      icon: Cpu,
+      skills: ["Docker", "AWS (S3/EC2)", "Vercel", "GitHub Actions", "CI/CD Pipelines"]
     },
     {
-      layer: "6. Version Control",
-      skills: [
-        { name: "Git", level: 9, icon: "devicon-git-plain colored" },
-        { name: "GitHub Actions", level: 6, icon: "devicon-github-original" },
-      ]
+      layer: "Version Control & Workflow",
+      icon: Terminal,
+      skills: ["Git", "GitHub", "npm / pnpm", "ESLint", "Prettier", "Agile / Scrum"]
     },
     {
-      layer: "7. Design",
-      skills: [
-        { name: "Figma", level: 7, icon: "devicon-figma-plain colored" },
-        { name: "Responsive Design", level: 9, icon: "devicon-html5-plain" },
-      ]
+      layer: "UI, UX & Design",
+      icon: Palette,
+      skills: ["Tailwind CSS", "Figma", "Responsive Web Design", "UI/UX Prototyping"]
     }
   ];
 
+  const totalSkills = stackLayers.reduce((sum, layer) => sum + layer.skills.length, 0);
+
   return (
-    <div id='skills' className="relative p-6 min-h-screen text-slate-800 font-sans selection:bg-cyan-100">
-      <div className="max-w-7xl mx-auto">
+    <section id='skills' className="py-20 bg-slate-50/50 text-slate-800 font-sans selection:bg-cyan-100 dark:bg-slate-950 dark:text-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header Section */}
-        <div className='flex flex-col md:flex-row justify-between items-start md:items-end border-b border-slate-200 pb-8 mb-10 gap-6'>
+        <div className='flex flex-col md:flex-row justify-between items-start md:items-end border-b border-slate-200 dark:border-slate-800 pb-8 mb-12 gap-6'>
           <div>
-            <h1 className="text-4xl font-black text-slate-900 tracking-tighter">MY SKILLS</h1>
-            <p className="text-slate-500 font-mono text-xs mt-2 uppercase tracking-[0.3em]">
-              Technical Proficiency across the 7 Layers // 2026
+            <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase">
+              My Tech Stack
+            </h1>
+            <p className="text-slate-500 dark:text-slate-400 font-mono text-xs mt-2 uppercase tracking-[0.2em]">
+              {totalSkills}+ technologies, tools, and architectural patterns
             </p>
           </div>
-
-          {/* Legend Implementation */}
-          <div className="flex flex-wrap gap-6 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] bg-white p-3 rounded-lg shadow-sm border border-slate-100">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-200 shadow-inner" /> Theory
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-400 shadow-inner" /> Practice
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-800 shadow-lg shadow-cyan-200" /> Mastery
-            </div>
-          </div>
         </div>
 
-        {/* 7 Layers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 gap-y-12">
-          {stackLayers.map((category, catIndex) => (
-            <div key={catIndex} className="flex flex-col gap-6 group/layer">
-
-              {/* Layer Heading - Optimized for mobile tap targets */}
-              <div className="flex items-center gap-3 border-b-2 border-slate-900 pb-3 group-hover/layer:border-cyan-500 transition-colors duration-500">
-                <h2 className="text-xs font-black uppercase text-slate-900 tracking-widest leading-none">
-                  {category.layer}
-                </h2>
-              </div>
-
-              {/* Skill Bars - Wider hit areas for thumbs */}
-              <div className="flex flex-col gap-6">
-                {category.skills.map((skill, sIndex) => (
-                  <div key={sIndex} className="group/skill cursor-default">
-                    <div className="flex justify-between items-center mb-2 px-1">
-                      <div className="flex items-center gap-2.5">
-                        {/* Icons are slightly larger on mobile for visibility */}
-                        <i className={`${skill.icon} text-xl md:text-lg transition-all duration-300`}></i>
-                        <span className="text-[11px] font-bold text-slate-600 uppercase tracking-tight">
-                          {skill.name}
-                        </span>
-                      </div>
-                      <span className="text-[10px] font-black font-mono text-black">
-                        {skill.level}/10
-                      </span>
-                    </div>
-
-                    <div className="relative h-3 w-full bg-slate-200/70 rounded-full overflow-hidden border border-slate-200 shadow-inner">
-                      <div
-                        className="absolute h-full bg-gradient-to-r from-gray-800 to-gray-600 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level * 10}%` }}
-                      />
-                    </div>
+        {/* Modern Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {stackLayers.map((category, catIndex) => {
+            const Icon = category.icon;
+            
+            return (
+              <div 
+                key={catIndex} 
+                className="p-5 rounded-xl border border-slate-200/60 dark:border-slate-800/80 bg-white dark:bg-slate-900/50 hover:border-cyan-500/30 dark:hover:border-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/[0.02] transition-all duration-300 group flex flex-col min-h-[180px]"
+              >
+                {/* Category Heading */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-cyan-50 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400 shrink-0 group-hover:bg-cyan-100 dark:group-hover:bg-cyan-900/50 transition-colors duration-300">
+                    <Icon className="w-4.5 h-4.5" />
                   </div>
-                ))}
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 text-sm tracking-tight transition-colors duration-300">
+                    {category.layer}
+                  </h3>
+                </div>
+
+                {/* Dense Badge Stack */}
+                <div className="flex flex-wrap gap-1.5">
+                  {category.skills.map((skill, sIndex) => (
+                    <span
+                      key={sIndex}
+                      className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-transparent dark:border-slate-700/50 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
+
+/* const skillCategories = [
+  {
+    title: "Frameworks & Languages",
+    icon: Code2,
+    skills: ["Vue 3", "React.js 18", "Next.js 13", "Next.js 14", "Next.js 15", "TypeScript", "JavaScript (ES6+)"],
+  },
+  {
+    title: "State Management",
+    icon: Workflow,
+    skills: ["Pinia", "Vue Router", "XState", "Zustand", "React-Redux", "React Toolkit"],
+  },
+  {
+    title: "Architecture & Patterns",
+    icon: Layers,
+    skills: ["SDD (Spec Driven Dev)", "Agentic", "File-type Based", "Feature-based", "Atomic Design", "Component-based", "Monorepo", "Micro Frontend"],
+  },
+  {
+    title: "Data & Real-time",
+    icon: Cable,
+    skills: ["Axios", "React Query", "TanStack Query", "REST API", "WebSocket", "UUID"],
+  },
+  {
+    title: "Forms & Validation",
+    icon: ClipboardCheck,
+    skills: ["Vee-Validate", "Formik", "Yup", "Zod"],
+  },
+  {
+    title: "UI & Styling",
+    icon: Palette,
+    skills: ["TailwindCSS", "SCSS / Sass", "Material UI 3", "Hero UI", "Shadcn", "vue-select"],
+  },
+  {
+    title: "Build & Performance",
+    icon: Zap,
+    skills: ["Vite", "Webpack", "Bundle Optimize", "PWA", "Vue Composable"],
+  },
+  {
+    title: "Security & Monitoring",
+    icon: ShieldCheck,
+    skills: ["Sentry", "jose (JWT)", "JWS", "Public Key", "Private Key", "Encoded Keys", "ACL"],
+  },
+  {
+    title: "DevOps & Workflow",
+    icon: Terminal,
+    skills: ["Git", "GitHub", "GitLab", "pnpm", "npm", "ESLint / Prettier", "CI/CD", "Jira", "Agile / Scrum", "Taskulu"],
+  },
+  {
+    title: "System Knowledge",
+    icon: Server,
+    skills: ["PWA Architecture", "Sandbox Environment", "Machine Abstraction"],
+  },
+]; */
 
 export default Skills;
