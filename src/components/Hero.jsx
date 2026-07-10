@@ -48,12 +48,12 @@ const Hero = () => {
           <div className="inline-block mx-auto md:mx-0 w-12 h-1 bg-cyan-500 mb-2"></div>
           
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-800 leading-tight">
-            Fullstack Web Developer <br />
-            <span className="text-cyan-600 font-medium text-2xl md:text-3xl">Backend & API Design</span>
+            This is Praveen Katti <br />
+            <span className="text-cyan-600 font-medium text-2xl md:text-3xl">Fullstack Web Developer</span>
           </h1>
           
           <p className="text-slate-600 text-lg font-light leading-relaxed max-w-md">
-            I build end-to-end web applications, with a deep passion for scalable backend engineering.
+            I build functional, secure, end-to-end web applications with robust API routing and seamless deployment.
           </p>
         </div>
       </div>
